@@ -1,39 +1,45 @@
 package com.kasmoprav.employeetrack.controller;
 
+import com.kasmoprav.employeetrack.dao.EmployeeRepository;
 import com.kasmoprav.employeetrack.model.Employee;
+import com.kasmoprav.employeetrack.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Controller
+@RequestMapping("/employee")
 public class EmployeeController {
-    @GetMapping ("/registration-form")
+
+    @Autowired
+    EmployeeService employeeService;
+
+    @GetMapping ("/register")
     public String showRegistrationForm(Model model){
-        Employee employee = new Employee();
-//        employee.setId(1L);
-//        employee.setDesignation("designation");
-//        employee.setAge(18);
-//        employee.setAdharCardNo("123456789012");
-//        employee.setPanCardNo("ABDO09PLA");
-//        employee.setDob(new Date());
-//        employee.setJoiningDate(LocalDateTime.now());
-//        employee.setEmail("employee@kasmoprav.com");
-//        employee.setGender("male");
-//        employee.setName("John Depps");
-        model.addAttribute("employee", employee);
-        return "registration-form";
+        model.addAttribute("employee", new Employee());
+        return "form";
     }
 
-    @PostMapping("/save")
-    public String saveEmployee(@ModelAttribute Employee employee, Model model) {
-        model.addAttribute("employee", employee);
-        return "display_form";
+    @PostMapping("/addEmployee")
+    public String saveEmployee(@ModelAttribute Employee employee) {
+        employeeService.saveEmployess(employee);
+        return "index";
     }
 
+    @GetMapping("/employeeList")
+    public String findAllEmployee(Model model){
+        model.addAttribute("EmployeeList", employeeService.getAllEmployee());
+        return "employee-list";
+    }
 
+    @GetMapping("/profile/{id}")
+    public String showEmployeeProfile(@PathVariable Long id, Model model) {
+        model.addAttribute("employee", employeeService.findEmployeeById(id));
+        return "employee-profile";
+    }
 }
+

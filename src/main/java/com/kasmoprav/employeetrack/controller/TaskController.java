@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping("/tasks")
@@ -38,7 +39,9 @@ public class TaskController {
         taskDTO.setName(name);
         taskDTO.setDescription(description);
         taskDTO.setDueDate(dueDate);
-        taskDTO.setAssignDate(LocalDateTime.now().toString());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+        String formattedDate = LocalDateTime.now().format(formatter);
+        taskDTO.setAssignDate(formattedDate);
         taskDTO.setProgress(progress);
         taskDTO.setDetails(details);
 

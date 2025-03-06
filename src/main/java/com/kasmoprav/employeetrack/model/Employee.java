@@ -2,44 +2,87 @@ package com.kasmoprav.employeetrack.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
-@Table(name = "employee")
 @Data
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
-    private String name;
+    private int employeeId;
+
+    private String firstName;
+
+    private String lastName;
+
+    private Long age;
+
+    private String aadharCard;
+
+    private String panCard;
+
     private String email;
-    private int age;
-    private Date dob;
-    private String adharCardNo;
-    private String panCardNo;
-    private String gender;
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private LocalDateTime joiningDate;
-    private String designation;
 
-    public long getId() {
+    private String phoneNo;
+
+    private String profileImage;
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Long getAge() {
+        return age;
+    }
+
+    public void setAge(Long age) {
+        this.age = age;
+    }
+
+    public String getAadharCard() {
+        return aadharCard;
+    }
+
+    public void setAadharCard(String aadharCard) {
+        this.aadharCard = aadharCard;
+    }
+
+    public String getPanCard() {
+        return panCard;
+    }
+
+    public void setPanCard(String panCard) {
+        this.panCard = panCard;
     }
 
     public String getEmail() {
@@ -50,59 +93,19 @@ public class Employee {
         this.email = email;
     }
 
-    public int getAge() {
-        return age;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
-    public Date getDob() {
-        return dob;
+    public String getProfileImage() {
+        return profileImage;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
-    public String getAdharCardNo() {
-        return adharCardNo;
-    }
-
-    public void setAdharCardNo(String adharCardNo) {
-        this.adharCardNo = adharCardNo;
-    }
-
-    public String getPanCardNo() {
-        return panCardNo;
-    }
-
-    public void setPanCardNo(String panCardNo) {
-        this.panCardNo = panCardNo;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public LocalDateTime getJoiningDate() {
-        return joiningDate;
-    }
-
-    public void setJoiningDate(LocalDateTime joiningDate) {
-        this.joiningDate = joiningDate;
-    }
-
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 }
