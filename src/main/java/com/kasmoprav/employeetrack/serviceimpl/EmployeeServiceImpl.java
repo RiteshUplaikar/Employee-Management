@@ -22,6 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee saveEmployess(Employee employee) {
+        employee.setEmployeeId("KASMO" + employee.getEmployeeId());
         return employeeRepository.save(employee);
     }
 

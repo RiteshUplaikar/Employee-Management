@@ -3,12 +3,14 @@ package com.kasmoprav.employeetrack.controller;
 import com.kasmoprav.employeetrack.dao.TaskRepository;
 import com.kasmoprav.employeetrack.dto.TaskDTO;
 import com.kasmoprav.employeetrack.model.Task;
+import com.kasmoprav.employeetrack.service.TaskInterface;
 import com.kasmoprav.employeetrack.serviceimpl.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -17,7 +19,10 @@ import java.time.format.DateTimeFormatter;
 public class TaskController {
 
     @Autowired
-    private TaskServiceImpl taskService;
+    private TaskServiceImpl taskServiceIml;
+
+    @Autowired
+    TaskInterface taskService;
 
     @Autowired
     private TaskRepository repository;
@@ -30,18 +35,11 @@ public class TaskController {
             @RequestParam(required = false) String progress,
             @RequestParam(required = false) String details
     ) {
-
-        if (name == null || description == null || dueDate == null || progress == null || details == null) {
-            System.out.println("⚠️ Some parameters are missing!");
-        }
-
         Task taskDTO = new Task();
         taskDTO.setName(name);
         taskDTO.setDescription(description);
         taskDTO.setDueDate(dueDate);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
-        String formattedDate = LocalDateTime.now().format(formatter);
-        taskDTO.setAssignDate(formattedDate);
+        taskDTO.setAssignDate(LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE));
         taskDTO.setProgress(progress);
         taskDTO.setDetails(details);
 
@@ -53,6 +51,12 @@ public class TaskController {
     @GetMapping("/delete/{id}")
     public String deleteTaskDetails(@PathVariable long id){
         repository.deleteById(id);
+        return "redirect:/";
+    }
+
+    @PostMapping("/update")
+    public String updateTask(@ModelAttribute Task task) {
+        taskService.updateTask(task);
         return "redirect:/";
     }
 }

@@ -3,60 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Employee Profile</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .profile-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 10px;
-            width: 40%;
-            margin: auto;
-            background-color: #f9f9f9;
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-
-        .profile-info {
-            width: 100%;
-            text-align: left;
-            padding: 10px;
-        }
-
-        h2 {
-            color: #4CAF50;
-            text-align: center;
-        }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .info-row strong {
-            width: 40%;
-        }
-
-        .info-row span {
-            width: 55%;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/Employee-profile.css" rel="stylesheet">
 </head>
 <body>
 
@@ -67,28 +15,28 @@
 
     <div class="profile-info">
         <div class="info-row">
-            <strong>Employee ID :</strong> <span th:text="${employee.employeeId}"></span>
+            <strong>Employee ID:</strong> <span th:text="${employee.employeeId}"></span>
         </div>
         <div class="info-row">
-            <strong>Email :</strong> <span th:text="${employee.emailId}"></span>
-        </div>
-      <div class="info-row">
-        <strong>Date Of Birth :</strong> <span th:text="${employee.dateOfBirth}"></span>
-      </div>
-        <div class="info-row">
-            <strong>Age :</strong> <span th:text="${employee.age}"></span>
+            <strong>Email:</strong> <span th:text="${employee.emailId}"></span>
         </div>
         <div class="info-row">
-            <strong>Phone :</strong> <span th:text="${employee.phoneNumber}"></span>
+            <strong>Date Of Birth:</strong> <span th:text="${employee.dateOfBirth}"></span>
         </div>
         <div class="info-row">
-            <strong>Gender :</strong> <span th:text="${employee.gender}"></span>
+            <strong>Age:</strong> <span th:text="${employee.age}"></span>
         </div>
         <div class="info-row">
-            <strong>Current Address :</strong> <span th:text="${employee.currentAddress}"></span>
+            <strong>Phone:</strong> <span th:text="${employee.phoneNumber}"></span>
         </div>
         <div class="info-row">
-            <strong>Permant Address :</strong> <span th:text="${employee.permantAddress}"></span>
+            <strong>Gender:</strong> <span th:text="${employee.gender}"></span>
+        </div>
+        <div class="info-row">
+            <strong>Current Address:</strong> <span th:text="${employee.currentAddress}"></span>
+        </div>
+        <div class="info-row">
+            <strong>Permanent Address:</strong> <span th:text="${employee.permantAddress}"></span>
         </div>
         <div class="info-row">
             <strong>Marital Status:</strong> <span th:text="${employee.maritalStatus}"></span>
@@ -97,9 +45,10 @@
             <strong>Aadhar Card Number:</strong> <span th:text="${employee.aadharCard}"></span>
         </div>
         <div class="info-row">
-            <strong>PAN Card Number :</strong> <span th:text="${employee.panCard}"></span>
+            <strong>PAN Card Number:</strong> <span th:text="${employee.panCard}"></span>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
