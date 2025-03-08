@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Employee Profile</title>
-  <style>
+    <meta charset="UTF-8">
+    <title>Employee Profile</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             padding: 20px;
             text-align: center;
         }
+
         .profile-container {
             display: flex;
             flex-direction: column;
@@ -21,6 +22,7 @@
             margin: auto;
             background-color: #f9f9f9;
         }
+
         .profile-img {
             width: 180px;
             height: 180px;
@@ -28,24 +30,29 @@
             object-fit: cover;
             margin-bottom: 20px;
         }
+
         .profile-info {
             width: 100%;
             text-align: left;
             padding: 10px;
         }
+
         h2 {
             color: #4CAF50;
             text-align: center;
         }
+
         .info-row {
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
             border-bottom: 1px solid #ddd;
         }
+
         .info-row strong {
             width: 40%;
         }
+
         .info-row span {
             width: 55%;
         }
@@ -54,31 +61,45 @@
 <body>
 
 <div class="profile-container">
-  <img th:src="@{/images/{img}(img=${employee.profileImage})}" class="profile-img" alt="Profile Image">
+    <img th:src="@{/images/{img}(img=${employee.profileImage})}" class="profile-img" alt="Profile Image">
 
-  <h2 th:text="${employee.firstName} + ' ' + ${employee.lastName}"></h2>
+    <h2 th:text="${employee.firstName} + ' ' + ${employee.middleName}+ ' ' + ${employee.lastName}"></h2>
 
-  <div class="profile-info">
-    <div class="info-row">
-      <strong>Employee ID:</strong> <span th:text="${employee.employeeId}"></span>
+    <div class="profile-info">
+        <div class="info-row">
+            <strong>Employee ID :</strong> <span th:text="${employee.employeeId}"></span>
+        </div>
+        <div class="info-row">
+            <strong>Email :</strong> <span th:text="${employee.emailId}"></span>
+        </div>
+      <div class="info-row">
+        <strong>Date Of Birth :</strong> <span th:text="${employee.dateOfBirth}"></span>
+      </div>
+        <div class="info-row">
+            <strong>Age :</strong> <span th:text="${employee.age}"></span>
+        </div>
+        <div class="info-row">
+            <strong>Phone :</strong> <span th:text="${employee.phoneNumber}"></span>
+        </div>
+        <div class="info-row">
+            <strong>Gender :</strong> <span th:text="${employee.gender}"></span>
+        </div>
+        <div class="info-row">
+            <strong>Current Address :</strong> <span th:text="${employee.currentAddress}"></span>
+        </div>
+        <div class="info-row">
+            <strong>Permant Address :</strong> <span th:text="${employee.permantAddress}"></span>
+        </div>
+        <div class="info-row">
+            <strong>Marital Status:</strong> <span th:text="${employee.maritalStatus}"></span>
+        </div>
+        <div class="info-row">
+            <strong>Aadhar Card Number:</strong> <span th:text="${employee.aadharCard}"></span>
+        </div>
+        <div class="info-row">
+            <strong>PAN Card Number :</strong> <span th:text="${employee.panCard}"></span>
+        </div>
     </div>
-    <div class="info-row">
-      <strong>Age:</strong> <span th:text="${employee.age}"></span>
-    </div>
-    <div class="info-row">
-      <strong>Email:</strong> <span th:text="${employee.email}"></span>
-    </div>
-    <div class="info-row">
-      <strong>Phone:</strong> <span th:text="${employee.phoneNo}"></span>
-    </div>
-    <div class="info-row">
-      <strong>Aadhar Card:</strong> <span th:text="${employee.aadharCard}"></span>
-    </div>
-    <div class="info-row">
-      <strong>PAN Card:</strong> <span th:text="${employee.panCard}"></span>
-    </div>
-  </div>
 </div>
-
 </body>
 </html>
