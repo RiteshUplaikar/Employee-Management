@@ -30,7 +30,7 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <h2>Add Tasks</h2>
                 <form th:action="@{/tasks/add}" method="post" class="task-form">
                     <input type="text" id="name" name="name" placeholder="Employee Name" required>
@@ -46,7 +46,7 @@
                 </form>
             </div>
 
-            <div class="col-8">
+            <div class="col-9">
                 <div class="task-list">
                     <h2>Tasks</h2>
                     <div class="col-10">
@@ -146,22 +146,22 @@
         }
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const editButtons = document.querySelectorAll(".edit");
-
+    document.addEventListener('DOMContentLoaded', () => {
+        const editButtons = document.querySelectorAll('.edit');
         editButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                document.getElementById("editTaskId").value = button.getAttribute("data-id");
-                document.getElementById("editName").value = button.getAttribute("data-name");
-                document.getElementById("editDescription").value = button.getAttribute("data-description");
-                document.getElementById("editAssignDate").value = button.getAttribute("data-assign-date");
-                document.getElementById("editDueDate").value = button.getAttribute("data-due-date");
-                document.getElementById("editProgress").value = button.getAttribute("data-progress");
-                document.getElementById("editDetails").value = button.getAttribute("data-details");
+            button.addEventListener('click', () => {
+                // Populate modal fields with task data
+                document.getElementById('editTaskId').value = button.getAttribute('data-id');
+                document.getElementById('editName').value = button.getAttribute('data-name');
+                document.getElementById('editDescription').value = button.getAttribute('data-description');
+                document.getElementById('editAssignDate').value = button.getAttribute('data-assign-date');
+                document.getElementById('editDueDate').value = button.getAttribute('data-due-date');
+                document.getElementById('editProgress').value = button.getAttribute('data-progress');
+                document.getElementById('editDetails').value = button.getAttribute('data-details');
 
-                // Open the modal
-                let editModal = new bootstrap.Modal(document.getElementById('editTaskModal'));
-                editModal.show();
+                // Show the modal
+                const editTaskModal = new bootstrap.Modal(document.getElementById('editTaskModal'));
+                editTaskModal.show();
             });
         });
     });

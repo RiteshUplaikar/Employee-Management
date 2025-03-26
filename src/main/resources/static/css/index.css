@@ -7,6 +7,14 @@ body {
     background-color: #28a745 !important;
 }
 
+.modal-backdrop {
+    z-index: 1050 !important;
+}
+
+.modal {
+    z-index: 1055 !important;
+}
+
 .task-form {
     padding: 20px;
     background-color: white;
