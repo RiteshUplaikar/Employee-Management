@@ -6,6 +6,10 @@ import com.kasmoprav.employeetrack.model.Task;
 import java.util.List;
 
 public interface TaskInterface {
+
     TaskDTO saveTask(TaskDTO taskDTO);
+
     List<TaskDTO> getTasks();
+
+    void updateTask(Task task);
 }
